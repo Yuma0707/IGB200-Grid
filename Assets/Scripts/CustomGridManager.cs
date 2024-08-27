@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class CustomGridManager : MonoBehaviour
 {
-    public GameObject panelPrefab; // 子パネルのプレハブ
-    public RectTransform parentPanel; // 親パネル
-    public int gridSize = 10; // デフォルトのグリッドサイズ
+    public GameObject panelPrefab; // Prefabricated child panel.子パネルのプレハブ
+    public RectTransform parentPanel; // main panel.親パネル
+    public int gridSize = 10; // Default grid size.デフォルトのグリッドサイズ
 
     void Start()
     {
@@ -16,27 +16,27 @@ public class CustomGridManager : MonoBehaviour
 
     public void GenerateGrid(int newSize)
     {
-        // 既存のパネルをクリア
+        // Clear existing panels.既存のパネルをクリア
         foreach (Transform child in parentPanel)
         {
             Destroy(child.gameObject);
         }
 
-        // 新しいグリッドサイズを設定
+        // Set new grid size.新しいグリッドサイズを設定
         gridSize = newSize;
 
-        // 親パネルの幅と高さを取得
+        // Get width and height of parent panel.親パネルの幅と高さを取得
         float panelWidth = parentPanel.rect.width;
         float panelHeight = parentPanel.rect.height;
 
-        // セルサイズを計算
+        // Calculate cell size.セルサイズを計算
         float cellSize = Mathf.Min(panelWidth / gridSize, panelHeight / gridSize);
 
-        // グリッド全体を中央に揃えるためのオフセットを計算
+        // Calculate offset to center the entire grid.グリッド全体を中央に揃えるためのオフセットを計算
         float offsetX = (panelWidth - (cellSize * gridSize)) / 2;
         float offsetY = (panelHeight - (cellSize * gridSize)) / 2;
 
-        // セルを手動で配置
+        // Place cells manually.セルを手動で配置
         for (int row = 0; row < gridSize; row++)
         {
             for (int col = 0; col < gridSize; col++)
@@ -50,7 +50,7 @@ public class CustomGridManager : MonoBehaviour
                 panelRect.anchorMax = new Vector2(0, 1);
                 panelRect.pivot = new Vector2(0, 1);
 
-                // パネルの位置を計算して設定
+                // Calculate and set the panel position.パネルの位置を計算して設定
                 float xPos = col * cellSize + offsetX;
                 float yPos = -row * cellSize - offsetY;
                 panelRect.anchoredPosition = new Vector2(xPos, yPos);
