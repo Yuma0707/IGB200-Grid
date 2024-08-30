@@ -16,27 +16,19 @@ public class CustomGridManager : MonoBehaviour
 
     public void GenerateGrid(int newSize)
     {
-        // Clear existing panels.既存のパネルをクリア
+        // Clear existing panels
         foreach (Transform child in parentPanel)
         {
             Destroy(child.gameObject);
         }
 
-        // Set new grid size.新しいグリッドサイズを設定
         gridSize = newSize;
-
-        // Get width and height of parent panel.親パネルの幅と高さを取得
         float panelWidth = parentPanel.rect.width;
         float panelHeight = parentPanel.rect.height;
-
-        // Calculate cell size.セルサイズを計算
         float cellSize = Mathf.Min(panelWidth / gridSize, panelHeight / gridSize);
-
-        // Calculate offset to center the entire grid.グリッド全体を中央に揃えるためのオフセットを計算
         float offsetX = (panelWidth - (cellSize * gridSize)) / 2;
         float offsetY = (panelHeight - (cellSize * gridSize)) / 2;
 
-        // Place cells manually.セルを手動で配置
         for (int row = 0; row < gridSize; row++)
         {
             for (int col = 0; col < gridSize; col++)
@@ -46,13 +38,15 @@ public class CustomGridManager : MonoBehaviour
 
                 RectTransform panelRect = panel.GetComponent<RectTransform>();
                 panelRect.sizeDelta = new Vector2(cellSize, cellSize);
-                panelRect.anchorMin = new Vector2(0, 1);
-                panelRect.anchorMax = new Vector2(0, 1);
-                panelRect.pivot = new Vector2(0, 1);
 
-                // Calculate and set the panel position.パネルの位置を計算して設定
-                float xPos = col * cellSize + offsetX;
-                float yPos = -row * cellSize - offsetY;
+                // Set anchor and pivot to center.アンカーとピボットを中央に設定
+                panelRect.anchorMin = new Vector2(0.5f, 0.5f);
+                panelRect.anchorMax = new Vector2(0.5f, 0.5f);
+                panelRect.pivot = new Vector2(0.5f, 0.5f);
+
+                // Corrected calculation of anchoredPosition.anchoredPositionの計算を修正
+                float xPos = (col - gridSize / 2f + 0.5f) * cellSize;
+                float yPos = -(row - gridSize / 2f + 0.5f) * cellSize;
                 panelRect.anchoredPosition = new Vector2(xPos, yPos);
             }
         }
