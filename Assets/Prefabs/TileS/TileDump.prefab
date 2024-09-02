@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 5820915974666272670}
   - component: {fileID: 7596837346204237282}
   - component: {fileID: 3361607196472243256}
+  - component: {fileID: 4935612006708752157}
   m_Layer: 5
   m_Name: TileDump
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,6 +103,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &4935612006708752157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2999319955538294792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913866c143854d04697db46ceeaf5469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileType: Dump
 --- !u!1 &4401769472722818904
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,7 +27,7 @@ public class TileSpawner : MonoBehaviour
             newTile.transform.localScale = transform.localScale;
 
             // Optionally, adjust the local position of the new tile if needed
-            newTile.transform.localPosition = Vector3.up; // Places it exactly on top
+            newTile.transform.localPosition = Vector3.zero; // Places it exactly on top
         }
     }
 }
