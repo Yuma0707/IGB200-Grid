@@ -5,11 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class LoadLevel : MonoBehaviour
 {
-    // このメソッドはボタンにアタッチされます
-    public void LoadLevel1()
+    // Changed to a method that takes a scene name as an argument.引数としてシーン名を受け取るメソッドに変更
+    public void LoadScene(string sceneName)
     {
-        // シーンをロードする
-        SceneManager.LoadScene("Level1");
+        // Load a Scene.シーンをロードする
+        SceneManager.LoadScene(sceneName);
     }
 }
+
 
