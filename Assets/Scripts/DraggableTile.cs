@@ -6,66 +6,42 @@ using UnityEngine.EventSystems;
 public class DraggableTile : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private Vector3 startPosition;
-    private Transform parentToReturnTo = null;
-    private Vector2 originalSize;
+    private CanvasGroup canvasGroup;
 
-    public void Start()
+    void Start()
     {
-        // Save original size of tile.タイルの元のサイズを保存
-        RectTransform rectTransform = GetComponent<RectTransform>();
-        originalSize = rectTransform.sizeDelta;
+        canvasGroup = GetComponent<CanvasGroup>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        startPosition = this.transform.position;
-        parentToReturnTo = this.transform.parent;
-        this.transform.SetParent(this.transform.root); // Move tile to the front of the line.タイルを最前面に移動
-
-        // Reset tile size to original size when drag starts.ドラッグが始まったときにタイルのサイズを元のサイズにリセット
-        RectTransform rectTransform = GetComponent<RectTransform>();
-        rectTransform.sizeDelta = originalSize;
-
-        // Tile is removed from Raycast target while dragging.ドラッグ中はタイルをRaycast対象から外す
-        GetComponent<CanvasGroup>().blocksRaycasts = false;
+        startPosition = transform.position;
+        canvasGroup.blocksRaycasts = false; // Disable Raycast while dragging.ドラッグ中はRaycastを無効にする
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        this.transform.position = Input.mousePosition;
+        transform.position = Input.mousePosition; // Follows the mouse cursor.マウスカーソルに追従する
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        // Return tile to Raycast target after end of drag.ドラッグ終了後にタイルをRaycast対象に戻す
-        GetComponent<CanvasGroup>().blocksRaycasts = true;
+        canvasGroup.blocksRaycasts = true; // Re-enable Raycast after drag ends.ドラッグ終了後に Raycast を再有効化
 
-        RaycastResult raycastResult = eventData.pointerCurrentRaycast;
-        GameObject dropTarget = raycastResult.gameObject;
-
-        Debug.Log("Raycast hit: " + raycastResult.gameObject.name);
-
+        GameObject dropTarget = eventData.pointerEnter; // Obtain drop target.ドロップ対象を取得
         if (dropTarget != null && dropTarget.GetComponent<CustomDropTarget>() != null)
         {
-            Debug.Log("Drop location found.: " + dropTarget.name);
-            this.transform.SetParent(dropTarget.transform);
-            this.transform.localPosition = Vector3.zero;  // Placed in the center of the cell.セルの中心に配置
+            // Move a tile to the world coordinates of a cell.タイルをセルのワールド座標に移動する
+            Vector3 worldPosition = dropTarget.transform.position;
+            transform.position = worldPosition;
 
-            RectTransform droppedRect = this.GetComponent<RectTransform>();
-            RectTransform targetRect = dropTarget.GetComponent<RectTransform>();
-
-            // Adjust size to fit drop destination cell.ドロップ先のセルに合わせてサイズを調整
-            droppedRect.sizeDelta = targetRect.sizeDelta;
+            // If necessary, cell positions can be saved for later use.必要に応じて、後で使うためにセルの位置を保存することも可能
         }
         else
         {
-            Debug.Log("No valid drop destination found. Return to starting position.");
-            this.transform.SetParent(parentToReturnTo);
-            this.transform.position = startPosition; // return something (that has been moved) to its original position.元の位置に戻す
-
-            // If there is no drop destination, restore the size.ドロップ先がない場合、サイズを元に戻す
-            RectTransform droppedRect = this.GetComponent<RectTransform>();
-            droppedRect.sizeDelta = originalSize;
+            // Restore original position if not dropped on a valid target.有効なターゲットにドロップされていない場合、元の位置に戻す
+            transform.position = startPosition;
         }
     }
+
 }

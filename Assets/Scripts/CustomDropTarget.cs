@@ -12,7 +12,7 @@ public class CustomDropTarget : MonoBehaviour, IDropHandler
         if (droppedObject != null)
         {
             Debug.Log("Dropped object: " + droppedObject.name);
-            droppedObject.transform.SetParent(this.transform);
+            // droppedObject.transform.SetParent(this.transform);
 
             RectTransform droppedRect = droppedObject.GetComponent<RectTransform>();
             RectTransform targetRect = this.GetComponent<RectTransform>();
