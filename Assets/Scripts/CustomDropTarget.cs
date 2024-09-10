@@ -10,10 +10,10 @@ public class CustomDropTarget : MonoBehaviour, IDropHandler
         GameObject droppedObject = eventData.pointerDrag;
         if (droppedObject != null && droppedObject.GetComponent<DraggableTile>() != null)
         {
-            // Move tile to this drop target location.ƒ^ƒCƒ‹‚ğ‚±‚Ìƒhƒƒbƒvƒ^[ƒQƒbƒg‚ÌˆÊ’u‚ÉˆÚ“®
+            // Move tile to this drop target location.ï¿½^ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìƒhï¿½ï¿½ï¿½bï¿½vï¿½^ï¿½[ï¿½Qï¿½bï¿½gï¿½ÌˆÊ’uï¿½ÉˆÚ“ï¿½
             droppedObject.transform.position = transform.position;
 
-            // Set parent object to Grid Generator.eƒIƒuƒWƒFƒNƒg‚ğ Grid Generator ‚Éİ’è
+            // Set parent object to Grid Generator.ï¿½eï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ Grid Generator ï¿½Éİ’ï¿½
             GameObject gridGenerator = GameObject.Find("Grid Generator");
             droppedObject.transform.SetParent(gridGenerator.transform, false);
         }

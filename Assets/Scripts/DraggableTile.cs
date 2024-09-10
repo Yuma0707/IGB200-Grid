@@ -7,8 +7,8 @@ public class DraggableTile : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 {
     private Vector3 startPosition;
     private CanvasGroup canvasGroup;
-    public TileSpawner tileSpawner;  // Reference to TileSpawner.TileSpawner‚Ö‚ÌQÆ
-    private bool isDropped = false;  // Flag if a tile has already been dropped or not.ƒ^ƒCƒ‹‚ªŠù‚Éƒhƒƒbƒv‚³‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO
+    public TileSpawner tileSpawner;  // Reference to TileSpawner.TileSpawnerï¿½Ö‚ÌQï¿½ï¿½
+    private bool isDropped = false;  // Flag if a tile has already been dropped or not.ï¿½^ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éƒhï¿½ï¿½ï¿½bï¿½vï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½é‚©ï¿½Ç‚ï¿½ï¿½ï¿½ï¿½Ìƒtï¿½ï¿½ï¿½O
 
     void Start()
     {
@@ -17,44 +17,45 @@ public class DraggableTile : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        startPosition = transform.position;  // Save the position at the start of the drag.ƒhƒ‰ƒbƒOŠJn‚ÌˆÊ’u‚ğ•Û‘¶
-        canvasGroup.blocksRaycasts = false;  // Disable Raycast while dragging.ƒhƒ‰ƒbƒO’†‚ÉRaycast‚ğ–³Œø‰»
+        startPosition = transform.position;  // Save the position at the start of the drag.ï¿½hï¿½ï¿½ï¿½bï¿½Oï¿½Jï¿½nï¿½ï¿½ï¿½ÌˆÊ’uï¿½ï¿½Û‘ï¿½
+        canvasGroup.blocksRaycasts = false;  // Disable Raycast while dragging.ï¿½hï¿½ï¿½ï¿½bï¿½Oï¿½ï¿½ï¿½ï¿½Raycastï¿½ğ–³Œï¿½ï¿½ï¿½
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        // Converts mouse position to world coordinates.ƒ}ƒEƒX‚ÌˆÊ’u‚ğƒ[ƒ‹ƒhÀ•W‚É•ÏŠ·
+        // Converts mouse position to world coordinates.ï¿½}ï¿½Eï¿½Xï¿½ÌˆÊ’uï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½Wï¿½É•ÏŠï¿½
         Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
-        // Make tiles follow the mouse.ƒ^ƒCƒ‹‚ğƒ}ƒEƒX‚É’Ç]‚³‚¹‚é
+        // Make tiles follow the mouse.ï¿½^ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½}ï¿½Eï¿½Xï¿½É’Ç]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         transform.position = new Vector3(worldMousePos.x, worldMousePos.y, transform.position.z);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        canvasGroup.blocksRaycasts = true;  // Re-enable Raycast at end of drag.ƒhƒ‰ƒbƒOI—¹‚ÉRaycast‚ğÄ—LŒø‰»
+        canvasGroup.blocksRaycasts = true;  // Re-enable Raycast at end of drag.ï¿½hï¿½ï¿½ï¿½bï¿½Oï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Raycastï¿½ï¿½ï¿½Ä—Lï¿½ï¿½ï¿½ï¿½
 
-        GameObject dropTarget = eventData.pointerEnter;  // Obtain the object to drop to.ƒhƒƒbƒvæ‚ÌƒIƒuƒWƒFƒNƒg‚ğæ“¾
+        GameObject dropTarget = eventData.pointerEnter;  // Obtain the object to drop to.ï¿½hï¿½ï¿½ï¿½bï¿½vï¿½ï¿½ÌƒIï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½æ“¾
         if (dropTarget != null && dropTarget.GetComponent<CustomDropTarget>() != null)
         {
-            // Move tile to drop destination.ƒhƒƒbƒvæ‚Éƒ^ƒCƒ‹‚ğˆÚ“®
+            // Move tile to drop destination.ï¿½hï¿½ï¿½ï¿½bï¿½vï¿½ï¿½Éƒ^ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Ú“ï¿½
             Vector3 worldPosition = dropTarget.transform.position;
             transform.position = worldPosition;
 
-            // Change parent object of tile to Grid Generator.ƒ^ƒCƒ‹‚ÌeƒIƒuƒWƒFƒNƒg‚ğGrid Generator‚É•ÏX
+            // Change parent object of tile to Grid Generator.ï¿½^ï¿½Cï¿½ï¿½ï¿½Ìeï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½Grid Generatorï¿½É•ÏX
             GameObject gridGenerator = GameObject.Find("Grid Generator");
             transform.SetParent(gridGenerator.transform, false);
 
-            // Reduce tile count if not already dropped..‚Ü‚¾ƒhƒƒbƒv‚³‚ê‚Ä‚¢‚È‚©‚Á‚½‚çƒ^ƒCƒ‹ƒJƒEƒ“ƒg‚ğŒ¸‚ç‚·
+            // Reduce tile count if not already dropped..ï¿½Ü‚ï¿½ï¿½hï¿½ï¿½ï¿½bï¿½vï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½^ï¿½Cï¿½ï¿½ï¿½Jï¿½Eï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ç‚·
             if (!isDropped && tileSpawner != null)
             {
                 tileSpawner.ReduceTileCount();
-                isDropped = true;  // Record once dropped.ˆê“xƒhƒƒbƒv‚³‚ê‚½‚±‚Æ‚ğ‹L˜^
+                isDropped = true;  // Record once dropped.ï¿½ï¿½xï¿½hï¿½ï¿½ï¿½bï¿½vï¿½ï¿½ï¿½ê‚½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Lï¿½^
             }
         }
         else
         {
-            // Restore original position if invalid drop destination.–³Œø‚Èƒhƒƒbƒvæ‚Ìê‡‚ÍŒ³‚ÌˆÊ’u‚É–ß‚·
+            // Restore original position if invalid drop destination.ï¿½ï¿½ï¿½ï¿½ï¿½Èƒhï¿½ï¿½ï¿½bï¿½vï¿½ï¿½Ìê‡ï¿½ÍŒï¿½ï¿½ÌˆÊ’uï¿½É–ß‚ï¿½
             transform.position = startPosition;
         }
     }
+
 }
