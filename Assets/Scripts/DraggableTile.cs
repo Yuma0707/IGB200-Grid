@@ -7,8 +7,8 @@ public class DraggableTile : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 {
     private Vector3 startPosition;
     private CanvasGroup canvasGroup;
-    public TileSpawner tileSpawner;  // TileSpawnerへの参照
-    private bool isDropped = false;  // タイルが既にドロップされているかどうかのフラグ
+    public TileSpawner tileSpawner;  // Reference to TileSpawner.TileSpawnerへの参照
+    private bool isDropped = false;  // Flag if a tile has already been dropped or not.タイルが既にドロップされているかどうかのフラグ
 
     void Start()
     {
@@ -17,43 +17,43 @@ public class DraggableTile : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        startPosition = transform.position;  // ドラッグ開始時の位置を保存
-        canvasGroup.blocksRaycasts = false;  // ドラッグ中にRaycastを無効化
+        startPosition = transform.position;  // Save the position at the start of the drag.ドラッグ開始時の位置を保存
+        canvasGroup.blocksRaycasts = false;  // Disable Raycast while dragging.ドラッグ中にRaycastを無効化
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        // マウスの位置をワールド座標に変換
+        // Converts mouse position to world coordinates.マウスの位置をワールド座標に変換
         Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
-        // タイルをマウスに追従させる
+        // Make tiles follow the mouse.タイルをマウスに追従させる
         transform.position = new Vector3(worldMousePos.x, worldMousePos.y, transform.position.z);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        canvasGroup.blocksRaycasts = true;  // ドラッグ終了時にRaycastを再有効化
+        canvasGroup.blocksRaycasts = true;  // Re-enable Raycast at end of drag.ドラッグ終了時にRaycastを再有効化
 
-        GameObject dropTarget = eventData.pointerEnter;  // ドロップ先のオブジェクトを取得
+        GameObject dropTarget = eventData.pointerEnter;  // Obtain the object to drop to.ドロップ先のオブジェクトを取得
         if (dropTarget != null && dropTarget.GetComponent<CustomDropTarget>() != null)
         {
-            // ドロップ先にタイルを移動
+            // Move tile to drop destination.ドロップ先にタイルを移動
             Vector3 worldPosition = dropTarget.transform.position;
             transform.position = worldPosition;
 
-            // タイルの親オブジェクトをGrid Generatorに変更
+            // Change parent object of tile to Grid Generator.タイルの親オブジェクトをGrid Generatorに変更
             GameObject gridGenerator = GameObject.Find("Grid Generator");
             transform.SetParent(gridGenerator.transform, false);
 
-            // まだドロップされていなかったらタイルカウントを減らす
+            // Reduce tile count if not already dropped..まだドロップされていなかったらタイルカウントを減らす
             if (!isDropped && tileSpawner != null)
             {
                 tileSpawner.ReduceTileCount();
-                isDropped = true;  // 一度ドロップされたことを記録
+                isDropped = true;  // Record once dropped.一度ドロップされたことを記録
             }
         }
         else
         {
-            // 無効なドロップ先の場合は元の位置に戻す
+            // Restore original position if invalid drop destination.無効なドロップ先の場合は元の位置に戻す
             transform.position = startPosition;
         }
     }

@@ -5,16 +5,16 @@ using TMPro;
 
 public class TileSpawner : MonoBehaviour
 {
-    public GameObject tilePrefab; // 生成するタイルのプレハブ
-    public int tileCount = 4; // 残りのタイル数を示すカウンタ
-    public TextMeshProUGUI tileCounterText; // 残りタイル数を表示するTextMeshProUGUI
+    public GameObject tilePrefab; // The prefab for the tile to be spawned
+    public int tileCount = 4; // Counter representing the remaining number of tiles
+    public TextMeshProUGUI tileCounterText; // TextMeshProUGUI to display the remaining tile count
 
     private void Start()
     {
-        // 残りタイル数を更新
+        // Update the remaining tile count
         UpdateTileCounter();
 
-        // タイルを生成
+        // Spawn the tiles
         SpawnTiles();
     }
 
@@ -22,18 +22,18 @@ public class TileSpawner : MonoBehaviour
     {
         Debug.Log("SpawnTiles called!");
 
-        // TileCountに基づいて複数タイルを生成
+        // Spawn multiple tiles based on TileCount
         for (int i = 0; i < tileCount; i++)
         {
             GameObject newTile = Instantiate(tilePrefab, transform.position, Quaternion.identity);
 
-            // TileSpawnerの子オブジェクトに設定
+            // Set the TileSpawner as the parent of the spawned tile
             newTile.transform.SetParent(this.transform, false);
 
-            // ローカル座標を(0, 0, 0)にリセット
+            // Reset local coordinates to (0, 0, 0)
             newTile.transform.localPosition = Vector3.zero;
 
-            // DraggableTile スクリプトにTileSpawnerを渡す
+            // Pass the TileSpawner reference to the DraggableTile script
             DraggableTile draggableTile = newTile.GetComponent<DraggableTile>();
             if (draggableTile != null)
             {
@@ -44,16 +44,16 @@ public class TileSpawner : MonoBehaviour
             Debug.Log($"Tile local position is: {newTile.transform.localPosition}");
         }
 
-        // 残りタイル数を更新
+        // Update the remaining tile count
         UpdateTileCounter();
     }
 
-    // 残りタイル数を表示するテキストを更新するメソッド
+    // Method to update the text displaying the remaining tile count
     public void UpdateTileCounter()
     {
         if (tileCounterText != null)
         {
-            tileCounterText.text = "×" + tileCount.ToString();  // テキストを更新
+            tileCounterText.text = "×" + tileCount.ToString();  // Update the text
         }
         else
         {
@@ -61,7 +61,7 @@ public class TileSpawner : MonoBehaviour
         }
     }
 
-    // タイルカウントを減らすメソッド
+    // Method to decrease the tile count
     public void ReduceTileCount()
     {
         if (tileCount > 0)
