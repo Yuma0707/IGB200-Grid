@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -675,6 +676,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1705395633}
     - target: {fileID: 891763753641822, guid: 7ab3b55c9b973ad498bee72d251b5b31, type: 3}
+      propertyPath: tileCounterText
+      value: 
+      objectReference: {fileID: 1430102393}
+    - target: {fileID: 891763753641822, guid: 7ab3b55c9b973ad498bee72d251b5b31, type: 3}
       propertyPath: tilePrefabs.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -933,6 +938,10 @@ PrefabInstance:
       propertyPath: gridGenerator
       value: 
       objectReference: {fileID: 1705395633}
+    - target: {fileID: 891763753641822, guid: 1649281925b2b8f4b90f6ebee6f80b37, type: 3}
+      propertyPath: tileCounterText
+      value: 
+      objectReference: {fileID: 1277727585}
     - target: {fileID: 891763753641822, guid: 1649281925b2b8f4b90f6ebee6f80b37, type: 3}
       propertyPath: tilePrefabs.Array.size
       value: 4
@@ -1923,6 +1932,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1705395633}
     - target: {fileID: 891763753641822, guid: 308ba8da1889df0409511683e6f1ed99, type: 3}
+      propertyPath: tileCounterText
+      value: 
+      objectReference: {fileID: 469481956}
+    - target: {fileID: 891763753641822, guid: 308ba8da1889df0409511683e6f1ed99, type: 3}
       propertyPath: tilePrefabs.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -2178,8 +2191,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1705395633}
     - target: {fileID: 891763753641822, guid: 6f3a0244a8fd91848aa56e73d14f922f, type: 3}
+      propertyPath: tileCounterText
+      value: 
+      objectReference: {fileID: 1179063505}
+    - target: {fileID: 891763753641822, guid: 6f3a0244a8fd91848aa56e73d14f922f, type: 3}
       propertyPath: tilePrefabs.Array.size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 891763753641822, guid: 6f3a0244a8fd91848aa56e73d14f922f, type: 3}
       propertyPath: tilePrefabs.Array.data[0]
