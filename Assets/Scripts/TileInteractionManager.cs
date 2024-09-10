@@ -11,6 +11,7 @@ public class TileInteractionManager : MonoBehaviour
     // Example interactions (you'll need to fill this in for all tile types)
     void Start()
     {
+        
         tileInteractions.Add("House_House", 0); // Houses next to each other are bad
         tileInteractions.Add("House_Park", 1);  // Houses near parks are good
         tileInteractions.Add("House_Dump", -1);
@@ -22,6 +23,7 @@ public class TileInteractionManager : MonoBehaviour
         tileInteractions.Add("Factory_Factory", 0);
         tileInteractions.Add("Park_Park", 0);
         // ... add more interactions here
+
     }
 
     // Function to get the interaction score between two tiles
@@ -35,6 +37,6 @@ public class TileInteractionManager : MonoBehaviour
         else if (tileInteractions.ContainsKey(key2))
             return tileInteractions[key2];
         else
-            return 0; // No interaction defined
+            return 3; // No interaction defined
     }
 }
