@@ -7,32 +7,15 @@ public class CustomDropTarget : MonoBehaviour, IDropHandler
 {
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("Custom OnDrop triggered");
         GameObject droppedObject = eventData.pointerDrag;
-        if (droppedObject != null)
+        if (droppedObject != null && droppedObject.GetComponent<DraggableTile>() != null)
         {
-            Debug.Log("Dropped object: " + droppedObject.name);
-            // droppedObject.transform.SetParent(this.transform);
+            // Move tile to this drop target location.ï¿½^ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìƒhï¿½ï¿½ï¿½bï¿½vï¿½^ï¿½[ï¿½Qï¿½bï¿½gï¿½ÌˆÊ’uï¿½ÉˆÚ“ï¿½
+            droppedObject.transform.position = transform.position;
 
-            RectTransform droppedRect = droppedObject.GetComponent<RectTransform>();
-            RectTransform targetRect = this.GetComponent<RectTransform>();
-
-            // Set anchor point and pivot to center.ƒAƒ“ƒJ[ƒ|ƒCƒ“ƒg‚Æƒsƒ{ƒbƒg‚ğ’†‰›‚Éİ’è
-            droppedRect.anchorMin = new Vector2(0.5f, 0.5f);
-            droppedRect.anchorMax = new Vector2(0.5f, 0.5f);
-            droppedRect.pivot = new Vector2(0.5f, 0.5f);
-
-            // Reset tile size and scale.ƒ^ƒCƒ‹‚ÌƒTƒCƒY‚ÆƒXƒP[ƒ‹‚ğƒŠƒZƒbƒg
-            droppedRect.sizeDelta = targetRect.sizeDelta;
-            droppedRect.localScale = Vector3.one;
-
-            // Center the tile in the center of the cell.ƒ^ƒCƒ‹‚ğƒZƒ‹‚Ì’†‰›‚É”z’u‚·‚é
-            droppedRect.anchoredPosition = Vector2.zero;
-
-            // Debug log added.ƒfƒoƒbƒOƒƒO’Ç‰Á
-            Debug.Log("Final Rect Size: " + droppedRect.sizeDelta);
+            // Set parent object to Grid Generator.ï¿½eï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ Grid Generator ï¿½Éİ’ï¿½
+            GameObject gridGenerator = GameObject.Find("Grid Generator");
+            droppedObject.transform.SetParent(gridGenerator.transform, false);
         }
     }
 }
-
-
