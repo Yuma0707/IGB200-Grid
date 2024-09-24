@@ -675,6 +675,10 @@ PrefabInstance:
       propertyPath: gridGenerator
       value: 
       objectReference: {fileID: 1705395633}
+    - target: {fileID: 891763753641822, guid: 7ab3b55c9b973ad498bee72d251b5b31, type: 3}
+      propertyPath: tileCounterText
+      value: 
+      objectReference: {fileID: 1430102393}
     - target: {fileID: 6668115685802179123, guid: 7ab3b55c9b973ad498bee72d251b5b31, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -882,6 +886,10 @@ PrefabInstance:
       propertyPath: gridGenerator
       value: 
       objectReference: {fileID: 1705395633}
+    - target: {fileID: 891763753641822, guid: 1649281925b2b8f4b90f6ebee6f80b37, type: 3}
+      propertyPath: tileCounterText
+      value: 
+      objectReference: {fileID: 1277727585}
     - target: {fileID: 6668115685802179123, guid: 1649281925b2b8f4b90f6ebee6f80b37, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1815,6 +1823,10 @@ PrefabInstance:
       propertyPath: gridGenerator
       value: 
       objectReference: {fileID: 1705395633}
+    - target: {fileID: 891763753641822, guid: 308ba8da1889df0409511683e6f1ed99, type: 3}
+      propertyPath: tileCounterText
+      value: 
+      objectReference: {fileID: 469481956}
     - target: {fileID: 6668115685802179123, guid: 308ba8da1889df0409511683e6f1ed99, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2046,6 +2058,10 @@ PrefabInstance:
       propertyPath: gridGenerator
       value: 
       objectReference: {fileID: 1705395633}
+    - target: {fileID: 891763753641822, guid: 6f3a0244a8fd91848aa56e73d14f922f, type: 3}
+      propertyPath: tileCounterText
+      value: 
+      objectReference: {fileID: 1179063505}
     - target: {fileID: 6668115685802179123, guid: 6f3a0244a8fd91848aa56e73d14f922f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
