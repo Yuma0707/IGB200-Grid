@@ -10,12 +10,18 @@ public class CustomDropTarget : MonoBehaviour, IDropHandler
         GameObject droppedObject = eventData.pointerDrag;
         if (droppedObject != null && droppedObject.GetComponent<DraggableTile>() != null)
         {
-            // Move tile to this drop target location.�^�C�������̃h���b�v�^�[�Q�b�g�̈ʒu�Ɉړ�
+            // タイルをセルの位置に移動
             droppedObject.transform.position = transform.position;
 
-            // Set parent object to Grid Generator.�e�I�u�W�F�N�g�� Grid Generator �ɐݒ�
+            // タイルの親オブジェクトをGrid Generatorに設定
             GameObject gridGenerator = GameObject.Find("Grid Generator");
             droppedObject.transform.SetParent(gridGenerator.transform, false);
+
+            // タイルのサイズをセルのサイズに合わせる
+            RectTransform droppedRect = droppedObject.GetComponent<RectTransform>();
+            RectTransform targetRect = GetComponent<RectTransform>();
+            droppedRect.sizeDelta = targetRect.sizeDelta;
         }
     }
+
 }
