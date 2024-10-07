@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; // Or TMPro.TMP_Text if you're using TextMeshPro
 using TMPro;
+using System.Threading;
 
 public class SubmitButtonHandler : MonoBehaviour
 {
     // Public variable to assign the GameObject to update
     public GameObject scoreDisplayObject;
+    public int playertartgetscore = 0;
+    public GameObject WinUI;
+    public GameObject LoseUI;
 
     private TMP_Text scoreDisplayText; // Or TMP_Text if using TextMeshPro
 
@@ -45,6 +49,16 @@ public class SubmitButtonHandler : MonoBehaviour
         if (scoreDisplayText != null)
         {
             scoreDisplayText.text = totalScore.ToString();
+        }
+        if(totalScore >= playertartgetscore)
+        {
+            WinUI.SetActive(true);
+            PlayerPrefs.SetInt("Level1Completed", 1);
+            PlayerPrefs.Save();
+        }
+        if(totalScore < 0)
+        {
+            LoseUI.SetActive(true);
         }
     }
 }
