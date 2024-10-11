@@ -53,7 +53,7 @@ public class TileSpawner : MonoBehaviour
     {
         if (tileCounterText != null)
         {
-            tileCounterText.text = "Å~" + tileCount.ToString();  // Update the text
+            tileCounterText.text = "X" + tileCount.ToString();  // Update the text
         }
         else
         {
