@@ -4849,9 +4849,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreDisplayObject: {fileID: 1602247729}
-  playertartgetscore: 0
-  WinUI: {fileID: 0}
-  LoseUI: {fileID: 0}
+  playertartgetscore: 51
+  WinUI: {fileID: 590672923}
+  LoseUI: {fileID: 1293824713}
 --- !u!1 &1927871560
 GameObject:
   m_ObjectHideFlags: 0
