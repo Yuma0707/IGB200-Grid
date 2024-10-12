@@ -6,7 +6,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 public class LoadLevel : MonoBehaviour
 {
-    // Changed to a method that takes a scene name as an argument.引数としてシーン名を受け取るメソッドに変更
+    // Changed to a method that takes a scene name as an argument.
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
