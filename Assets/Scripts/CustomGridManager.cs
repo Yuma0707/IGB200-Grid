@@ -67,7 +67,7 @@ public class CustomGridManager : MonoBehaviour
     {
         GameObject indicator = Instantiate(gridScoreIndicatorPrefab, parentPanel);
         RectTransform indicatorRect = indicator.GetComponent<RectTransform>();
-        indicatorRect.sizeDelta = new Vector2(cellSize / 2.5f, cellSize / 2.5f); // Change these numbers to change the scaling relative to the panels size
+        indicatorRect.sizeDelta = new Vector2(cellSize / 4f, cellSize / 4f); // Change these numbers to change the scaling relative to the panels size
         indicatorRect.anchorMin = new Vector2(0.5f, 0.5f);
         indicatorRect.anchorMax = new Vector2(0.5f, 0.5f);
         indicatorRect.pivot = new Vector2(0.5f, 0.5f);
