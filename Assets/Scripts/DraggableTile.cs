@@ -6,56 +6,56 @@ using UnityEngine.EventSystems;
 public class DraggableTile : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private Vector3 startPosition;
+    private Transform startParent;
     private CanvasGroup canvasGroup;
-    public TileSpawner tileSpawner;  // Reference to TileSpawner.TileSpawner�ւ̎Q��
-    private bool isDropped = false;  // Flag if a tile has already been dropped or not.�^�C�������Ƀh���b�v����Ă��邩�ǂ����̃t���O
+    public TileSpawner tileSpawner;  // タイルスポナーの参照
+    public bool isDropped = false;  // ドロップ済みかどうか
+
+    // startParentのプロパティ
+    public Transform StartParent
+    {
+        get { return startParent; }
+        set { startParent = value; }
+    }
 
     void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
+        startParent = transform.parent; // 初期の親オブジェクトを保存
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        startPosition = transform.position;  // Save the position at the start of the drag.�h���b�O�J�n���̈ʒu��ۑ�
-        canvasGroup.blocksRaycasts = false;  // Disable Raycast while dragging.�h���b�O����Raycast�𖳌���
+        startPosition = transform.position; // ドラッグ開始時の位置を保存
+        StartParent = transform.parent; // ドラッグ開始時の親を保存
+        canvasGroup.blocksRaycasts = false; // ドラッグ中はRaycastを無効にする
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        // Converts mouse position to world coordinates.�}�E�X�̈ʒu�����[���h���W�ɕϊ�
-        Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
-        // Make tiles follow the mouse.�^�C�����}�E�X�ɒǏ]������
+        // マウスの位置をワールド座標に変換
+        Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
+        // タイルをマウスの位置に追従させる
         transform.position = new Vector3(worldMousePos.x, worldMousePos.y, transform.position.z);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        canvasGroup.blocksRaycasts = true;  // Re-enable Raycast at end of drag.�h���b�O�I������Raycast���ėL����
+        canvasGroup.blocksRaycasts = true; // ドラッグ終了時にRaycastを有効に戻す
 
-        GameObject dropTarget = eventData.pointerEnter;  // Obtain the object to drop to.�h���b�v��̃I�u�W�F�N�g���擾
+        GameObject dropTarget = eventData.pointerEnter; // ドロップ先のオブジェクトを取得
+
         if (dropTarget != null && dropTarget.GetComponent<CustomDropTarget>() != null)
         {
-            // Move tile to drop destination.�h���b�v��Ƀ^�C�����ړ�
-            Vector3 worldPosition = dropTarget.transform.position;
-            transform.position = worldPosition;
-
-            // Change parent object of tile to Grid Generator.�^�C���̐e�I�u�W�F�N�g��Grid Generator�ɕύX
-            GameObject gridGenerator = GameObject.Find("Grid Generator");
-            transform.SetParent(gridGenerator.transform, false);
-
-            // Reduce tile count if not already dropped..�܂��h���b�v����Ă��Ȃ�������^�C���J�E���g�����炷
-            if (!isDropped && tileSpawner != null)
-            {
-                tileSpawner.ReduceTileCount();
-                isDropped = true;  // Record once dropped.��x�h���b�v���ꂽ���Ƃ��L�^
-            }
+            CustomDropTarget dropTargetComponent = dropTarget.GetComponent<CustomDropTarget>();
+            dropTargetComponent.HandleDrop(this);
         }
         else
         {
-            // Restore original position if invalid drop destination.�����ȃh���b�v��̏ꍇ�͌��̈ʒu�ɖ߂�
+            // 無効なドロップ先の場合は元の位置に戻す
             transform.position = startPosition;
+            transform.SetParent(StartParent, false);
+            transform.localPosition = Vector3.zero; // 元のパネルの中央に配置
         }
     }
-
 }

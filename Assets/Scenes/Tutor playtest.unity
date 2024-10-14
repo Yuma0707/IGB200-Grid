@@ -2521,6 +2521,7 @@ GameObject:
   - component: {fileID: 1138779459}
   - component: {fileID: 1138779458}
   - component: {fileID: 1138779462}
+  - component: {fileID: 1138779463}
   m_Layer: 5
   m_Name: Playground
   m_TagString: Untagged
@@ -2631,6 +2632,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102aa2a593601ec4ba58d70677ba44a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1138779463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138779457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b081db3e3d0a754d9d7ac5f3dda591f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalScoreText: {fileID: 1602247731}
+  parScore: 4
 --- !u!1 &1157073954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2911,7 +2926,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Next level
+  m_Text: Level select
 --- !u!222 &1222183513
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3478,7 +3493,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: LevelSelect
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1404643212
@@ -4184,7 +4199,7 @@ MonoBehaviour:
   panelPrefab: {fileID: 6449677964235919782, guid: fafb4579832b8a042bd0dbc5d7548ae6, type: 3}
   gridScoreIndicatorPrefab: {fileID: 1944287319584557883, guid: 615f64bc227958740bb82032309d6c2a, type: 3}
   parentPanel: {fileID: 1705395633}
-  gridSize: 4
+  gridSize: 2
 --- !u!114 &1705395636
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2795,6 +2795,7 @@ GameObject:
   - component: {fileID: 1138779459}
   - component: {fileID: 1138779458}
   - component: {fileID: 1138779462}
+  - component: {fileID: 1138779463}
   m_Layer: 5
   m_Name: Playground
   m_TagString: Untagged
@@ -2907,6 +2908,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102aa2a593601ec4ba58d70677ba44a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1138779463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138779457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b081db3e3d0a754d9d7ac5f3dda591f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalScoreText: {fileID: 1602247731}
+  parScore: 16
 --- !u!1 &1157073954
 GameObject:
   m_ObjectHideFlags: 0

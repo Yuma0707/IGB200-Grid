@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1794da0b5d2e86c4c9c4b0de245067f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileSpawner: {fileID: 0}
 --- !u!225 &3361607196472243256
 CanvasGroup:
   m_ObjectHideFlags: 0
