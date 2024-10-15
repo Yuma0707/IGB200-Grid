@@ -56,7 +56,7 @@ public class SubmitButtonHandler : MonoBehaviour
             PlayerPrefs.SetInt("Level1Completed", 1);
             PlayerPrefs.Save();
         }
-        if(totalScore < 0)
+        if(totalScore < playertartgetscore)
         {
             LoseUI.SetActive(true);
         }
