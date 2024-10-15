@@ -12,6 +12,17 @@ public class CustomDropTarget : MonoBehaviour, IDropHandler
         if (droppedObject != null && droppedObject.GetComponent<DraggableTile>() != null)
         {
             DraggableTile draggableTile = droppedObject.GetComponent<DraggableTile>();
+
+            // Disable swapping if tiles generated from the sponer have not yet been placed on the panel
+            if (draggableTile.tileSpawner != null && !draggableTile.isDropped)
+            {
+                // Restore a dragged tile to its original position
+                draggableTile.transform.position = draggableTile.startPosition;
+                draggableTile.transform.SetParent(draggableTile.StartParent, false);
+                draggableTile.transform.localPosition = Vector3.zero;
+                return; // End of process
+            }
+
             HandleDrop(draggableTile);
         }
     }
@@ -20,33 +31,33 @@ public class CustomDropTarget : MonoBehaviour, IDropHandler
     {
         Transform existingTile = transform.childCount > 0 ? transform.GetChild(0) : null;
 
-        // 既存のタイルがある場合は入れ替える
+        // Replace existing tiles if any.
         if (existingTile != null)
         {
-            // 既存のタイルをドラッグされたタイルの元の親に移動
+            // Move an existing tile to the original parent of the dragged tile
             Transform originalParent = draggableTile.StartParent;
             existingTile.SetParent(originalParent, false);
-            existingTile.localPosition = Vector3.zero; // 元の位置に配置
-            AdjustSize(existingTile); // サイズを元のパネルに調整
+            existingTile.localPosition = Vector3.zero; // Place in original position
+            AdjustSize(existingTile); // Adjust size to original panel
         }
 
-        // ドロップされたタイルを新しいパネルに配置
+        // Place dropped tiles on new panel
         draggableTile.transform.SetParent(transform, false);
-        draggableTile.transform.localPosition = Vector3.zero; // ドロップ先の中央に配置
-        AdjustSize(draggableTile.transform); // ドロップ先のサイズに合わせて調整
+        draggableTile.transform.localPosition = Vector3.zero; // Centered on drop destination
+        AdjustSize(draggableTile.transform); // Adjusts to the size of the drop destination
 
-        // ドロップカウント処理
+        // Drop count processing
         if (!draggableTile.isDropped && draggableTile.tileSpawner != null)
         {
             draggableTile.tileSpawner.ReduceTileCount();
-            draggableTile.isDropped = true; // ドロップ済みであることを記録
+            draggableTile.isDropped = true; // Recorded as dropped
         }
 
-        // ドロップ後の親を更新
+        // Update parent after drop
         draggableTile.StartParent = transform;
     }
 
-    // タイルのサイズを新しいパネルのサイズに合わせるメソッド
+    // Method to match tile size to new panel size
     private void AdjustSize(Transform tile)
     {
         RectTransform tileRect = tile.GetComponent<RectTransform>();

@@ -5,13 +5,13 @@ using UnityEngine.EventSystems;
 
 public class DraggableTile : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private Vector3 startPosition;
-    private Transform startParent;
+    public Vector3 startPosition;
+    public Transform startParent;
     private CanvasGroup canvasGroup;
-    public TileSpawner tileSpawner;  // タイルスポナーの参照
-    public bool isDropped = false;  // ドロップ済みかどうか
+    public TileSpawner tileSpawner;  // Tile Sponer Reference
+    public bool isDropped = false;  // Dropped or not
 
-    // startParentのプロパティ
+    // Properties of startParent
     public Transform StartParent
     {
         get { return startParent; }
@@ -21,29 +21,29 @@ public class DraggableTile : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
-        startParent = transform.parent; // 初期の親オブジェクトを保存
+        startParent = transform.parent; // Save initial parent object
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        startPosition = transform.position; // ドラッグ開始時の位置を保存
-        StartParent = transform.parent; // ドラッグ開始時の親を保存
-        canvasGroup.blocksRaycasts = false; // ドラッグ中はRaycastを無効にする
+        startPosition = transform.position; // Save the position at the start of the drag
+        StartParent = transform.parent; // Save the parent at the start of the drag
+        canvasGroup.blocksRaycasts = false; // Disable Raycast while dragging
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        // マウスの位置をワールド座標に変換
+        // Converts mouse position to world coordinates
         Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
-        // タイルをマウスの位置に追従させる
+        // Make tiles follow the mouse position
         transform.position = new Vector3(worldMousePos.x, worldMousePos.y, transform.position.z);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        canvasGroup.blocksRaycasts = true; // ドラッグ終了時にRaycastを有効に戻す
+        canvasGroup.blocksRaycasts = true; // Return Raycast to active at the end of a drag
 
-        GameObject dropTarget = eventData.pointerEnter; // ドロップ先のオブジェクトを取得
+        GameObject dropTarget = eventData.pointerEnter; // Obtain the object to drop to
 
         if (dropTarget != null && dropTarget.GetComponent<CustomDropTarget>() != null)
         {
@@ -52,10 +52,10 @@ public class DraggableTile : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         }
         else
         {
-            // 無効なドロップ先の場合は元の位置に戻す
+            // Restore original position if invalid drop destination
             transform.position = startPosition;
             transform.SetParent(StartParent, false);
-            transform.localPosition = Vector3.zero; // 元のパネルの中央に配置
+            transform.localPosition = Vector3.zero; // Centered on the original panel
         }
     }
 }
