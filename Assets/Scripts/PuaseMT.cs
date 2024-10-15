@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using static System.Net.Mime.MediaTypeNames;
+using UnityEngine.SceneManagement;
 
-public class PauseMenuUI : MonoBehaviour
+public class PuaseMT : MonoBehaviour
 {
     public GameObject pauseMenuUI;
     private bool isPaused = false;
@@ -13,27 +13,22 @@ public class PauseMenuUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
+            TogglePause();
         }
     }
 
-    public void Resume()
+    public void TogglePause()
     {
-        pauseMenuUI.SetActive(false);
-        isPaused = false;
-    }
+        isPaused = !isPaused;
 
-    void Pause()
-    {
-        pauseMenuUI.SetActive(true);
-        isPaused = true;
+        if (isPaused)
+        {
+            pauseMenuUI.SetActive(true);
+        }
+        else
+        {
+            pauseMenuUI.SetActive(false);
+        }
     }
 
     public void QuitGame()
@@ -46,12 +41,9 @@ public class PauseMenuUI : MonoBehaviour
         Application.Quit();
         #endif
     }
+
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
-    }
-    public void turnPause()
-    {
-        pauseMenuUI.SetActive(true);
     }
 }

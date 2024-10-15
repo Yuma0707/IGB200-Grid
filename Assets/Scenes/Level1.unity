@@ -1240,6 +1240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panelPrefab: {fileID: 6449677964235919782, guid: fafb4579832b8a042bd0dbc5d7548ae6, type: 3}
+  gridScoreIndicatorPrefab: {fileID: 0}
   parentPanel: {fileID: 1705395633}
   gridSize: 10
 --- !u!1660057539 &9223372036854775807
