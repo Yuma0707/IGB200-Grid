@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Next level
+  m_Text: Menu
 --- !u!1 &924375067712121153
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 171, y: -333}
+  m_AnchoredPosition: {x: -198, y: -333}
   m_SizeDelta: {x: 253.4944, y: 168.4436}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4558292065364990722
@@ -629,7 +629,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -173.25, y: -333}
+  m_AnchoredPosition: {x: 200, y: -333}
   m_SizeDelta: {x: 253.4944, y: 168.4436}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2595500784900712054
@@ -723,7 +723,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level 2
+          m_StringArgument: Menu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &3012084400341487983
