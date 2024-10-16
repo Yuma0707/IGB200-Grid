@@ -5,16 +5,16 @@ using UnityEngine.EventSystems;
 
 public class DraggableTile : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private Vector3 startPosition;
-    private CanvasGroup canvasGroup;
+    public Vector3 startPosition;
+    public CanvasGroup canvasGroup;
     public TileSpawner tileSpawner;  // Reference to TileSpawner
-    private bool isDropped = false;  // Flag to check if the tile has already been dropped or not.
+    public bool isDropped = false;  // Flag to check if the tile has already been dropped or not.
 
     public AudioClip pickUpSound;   // pickUpSound
     public AudioClip putDownSound;  // putDownSound
-    private AudioSource audioSource;  // Audio source components
+    public AudioSource audioSource;  // Audio source components
 
-    void Start()
+    public void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
         audioSource = GetComponent<AudioSource>();  // Get AudioSource component

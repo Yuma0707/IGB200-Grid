@@ -58,7 +58,7 @@ public class CustomDropTarget : MonoBehaviour, IDropHandler
     }
 
     // Method to match tile size to new panel size
-    private void AdjustSize(Transform tile)
+    public void AdjustSize(Transform tile)
     {
         RectTransform tileRect = tile.GetComponent<RectTransform>();
         RectTransform parentRect = tile.parent.GetComponent<RectTransform>();
