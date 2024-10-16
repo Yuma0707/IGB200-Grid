@@ -49,7 +49,25 @@ public class CustomGridManager : MonoBehaviour
                 float xPos = (col - gridSize / 2f + 0.5f) * cellSize;
                 float yPos = -(row - gridSize / 2f + 0.5f) * cellSize;
                 panelRect.anchoredPosition = new Vector2(xPos, yPos);
+                /*
 
+                // Instantiate and position GridScoreIndicators
+                if (row < gridSize - 1)
+                {
+                    InstantiateGridScoreIndicator(row, col, cellSize, offsetX, offsetY, 0, cellSize / 2); // Below
+                }
+                if (col < gridSize - 1)
+                {
+                    InstantiateGridScoreIndicator(row, col, cellSize, offsetX, offsetY, cellSize / 2, 0); // Right
+                }
+                */
+            }
+        }
+
+        for (int row = 0; row < gridSize; row++)
+        {
+            for (int col = 0; col < gridSize; col++)
+            {
                 // Instantiate and position GridScoreIndicators
                 if (row < gridSize - 1)
                 {
@@ -61,13 +79,15 @@ public class CustomGridManager : MonoBehaviour
                 }
             }
         }
+
+
     }
 
     private void InstantiateGridScoreIndicator(int row, int col, float cellSize, float offsetX, float offsetY, float additionalX, float additionalY)
     {
         GameObject indicator = Instantiate(gridScoreIndicatorPrefab, parentPanel);
         RectTransform indicatorRect = indicator.GetComponent<RectTransform>();
-        indicatorRect.sizeDelta = new Vector2(cellSize / 2.5f, cellSize / 2.5f); // Change these numbers to change the scaling relative to the panels size
+        indicatorRect.sizeDelta = new Vector2(cellSize / 4f, cellSize / 4f); // Change these numbers to change the scaling relative to the panels size
         indicatorRect.anchorMin = new Vector2(0.5f, 0.5f);
         indicatorRect.anchorMax = new Vector2(0.5f, 0.5f);
         indicatorRect.pivot = new Vector2(0.5f, 0.5f);

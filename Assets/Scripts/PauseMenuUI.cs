@@ -50,4 +50,8 @@ public class PauseMenuUI : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+    public void turnPause()
+    {
+        pauseMenuUI.SetActive(true);
+    }
 }

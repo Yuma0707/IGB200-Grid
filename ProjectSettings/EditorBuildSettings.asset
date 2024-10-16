@@ -6,30 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 1a43ee92c6db35049aca23a51e846860
-  - enabled: 1
-    path: Assets/Scenes/Tutor.unity
-    guid: 2a0e880ae6e59d3468a0d46e7e6e7f0c
-  - enabled: 0
-    path: Assets/Scenes/IA.unity
-    guid: 7476078704fbd8c428a0946f9170d9a0
-  - enabled: 1
     path: Assets/Scenes/Control.unity
     guid: deaba6f573f77ad47ab0a2079bfa5680
-  - enabled: 0
-    path: Assets/Scenes/Prototype2.unity
-    guid: ca6bb3aceaa9f234c9c858250ba30536
   - enabled: 1
     path: Assets/Scenes/LevelSelect.unity
     guid: feb3dda6e3348de44bf95aee3f5f53cd
   - enabled: 1
-    path: Assets/Scenes/Tutor playtest.unity
-    guid: d3b454396f4915a43bf622a3597d3fbc
-  - enabled: 0
-    path: Assets/Scenes/Level1.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/MainMenu.unity
+    guid: 1a43ee92c6db35049aca23a51e846860
   - enabled: 1
-    path: Assets/Scenes/Prototype4 - IA.unity
-    guid: 68a0cf3cb02f2f841837765a81313a7c
+    path: Assets/Scenes/Level 1.unity
+    guid: 4744edd713587c54ab3838a0faae0fdd
+  - enabled: 1
+    path: Assets/Scenes/Level 2.unity
+    guid: 9e332d0704a6f694eac1f901cd35831d
   m_configObjects: {}
