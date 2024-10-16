@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static System.Net.Mime.MediaTypeNames;
 
 public class LoadLevel : MonoBehaviour
 {
@@ -11,15 +10,22 @@ public class LoadLevel : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
     }
+
     public void QuitGame()
     {
         PlayerPrefs.SetInt("Level1Completed", 0);
         PlayerPrefs.Save();
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        #else
+#else
         Application.Quit();
-        #endif
+#endif
+    }
+
+    // This method reloads the current active scene.
+    public void RetryLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
 
