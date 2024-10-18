@@ -7,55 +7,77 @@ public class DraggableTile : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 {
     private Vector3 startPosition;
     private CanvasGroup canvasGroup;
-    public TileSpawner tileSpawner;  // Reference to TileSpawner.TileSpawner�ւ̎Q��
-    private bool isDropped = false;  // Flag if a tile has already been dropped or not.�^�C�������Ƀh���b�v����Ă��邩�ǂ����̃t���O
+    public TileSpawner tileSpawner;  // Reference to TileSpawner
+    private bool isDropped = false;  // Flag to check if the tile has already been dropped or not.
+
+    public AudioClip pickUpSound;   // pickUpSound
+    public AudioClip putDownSound;  // putDownSound
+    private AudioSource audioSource;  // Audio source components
 
     void Start()
     {
         canvasGroup = GetComponent<CanvasGroup>();
+        audioSource = GetComponent<AudioSource>();  // Get AudioSource component
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();  // If it does not exist, add the AudioSource component
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        startPosition = transform.position;  // Save the position at the start of the drag.�h���b�O�J�n���̈ʒu��ۑ�
-        canvasGroup.blocksRaycasts = false;  // Disable Raycast while dragging.�h���b�O����Raycast�𖳌���
+        startPosition = transform.position;  // Saves the position at the start of the drag
+        canvasGroup.blocksRaycasts = false;  // Disable Raycast during dragging 
+
+        // Play pickup sound effects 
+        if (pickUpSound != null)
+        {
+            audioSource.clip = pickUpSound;
+            audioSource.Play();
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        // Converts mouse position to world coordinates.�}�E�X�̈ʒu�����[���h���W�ɕϊ�
+        // Convert mouse position to world coordinates 
         Vector3 worldMousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z));
-        // Make tiles follow the mouse.�^�C�����}�E�X�ɒǏ]������
+        // Make objects follow the mouse
         transform.position = new Vector3(worldMousePos.x, worldMousePos.y, transform.position.z);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        canvasGroup.blocksRaycasts = true;  // Re-enable Raycast at end of drag.�h���b�O�I������Raycast���ėL����
+        canvasGroup.blocksRaycasts = true;  // Re-enable Raycast at end of drag
 
-        GameObject dropTarget = eventData.pointerEnter;  // Obtain the object to drop to.�h���b�v��̃I�u�W�F�N�g���擾
+        GameObject dropTarget = eventData.pointerEnter;  // Get drag-and-drop target object
         if (dropTarget != null && dropTarget.GetComponent<CustomDropTarget>() != null)
         {
-            // Move tile to drop destination.�h���b�v��Ƀ^�C�����ړ�
+            // Move the object to the placement destination
             Vector3 worldPosition = dropTarget.transform.position;
             transform.position = worldPosition;
 
-            // Change parent object of tile to Grid Generator.�^�C���̐e�I�u�W�F�N�g��Grid Generator�ɕύX
+            // Change the object's parent to Grid Generator
             GameObject gridGenerator = GameObject.Find("Grid Generator");
             transform.SetParent(gridGenerator.transform, false);
 
-            // Reduce tile count if not already dropped..�܂��h���b�v����Ă��Ȃ�������^�C���J�E���g�����炷
+            // Reduce the number of tiles if objects have not yet been placed
             if (!isDropped && tileSpawner != null)
             {
                 tileSpawner.ReduceTileCount();
-                isDropped = true;  // Record once dropped.��x�h���b�v���ꂽ���Ƃ��L�^
+                isDropped = true;  // Records have been placed
+            }
+
+            // Play Drop Sound
+            if (putDownSound != null)
+            {
+                audioSource.clip = putDownSound;
+                audioSource.Play();
             }
         }
         else
         {
-            // Restore original position if invalid drop destination.�����ȃh���b�v��̏ꍇ�͌��̈ʒu�ɖ߂�
+            // Restore original position if placement is not valid
             transform.position = startPosition;
         }
     }
-
 }

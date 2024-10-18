@@ -201,7 +201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 91aa496e40f371e4f8de8faf90e661c9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca396ddc843e04244be1c32dcd6a4f6e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -225,3 +225,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 2999319955538294792, guid: fb3db634dd594a049a4cc005e56b6f3d, type: 3}
   tileCount: 5
+  tileCounterText: {fileID: 0}
