@@ -22,6 +22,13 @@ public class TileSpawner : MonoBehaviour
     {
         Debug.Log("SpawnTiles called!");
 
+        
+        // Get the spawner's width and height from its RectTransform
+        float spawnerWidth = GetComponent<RectTransform>().rect.width;
+        float spawnerHeight = GetComponent<RectTransform>().rect.height;
+        
+        
+
         // Spawn multiple tiles based on TileCount
         for (int i = 0; i < tileCount; i++)
         {
@@ -30,8 +37,19 @@ public class TileSpawner : MonoBehaviour
             // Set the TileSpawner as the parent of the spawned tile
             newTile.transform.SetParent(this.transform, false);
 
+                     
+            
+            // Get the tile's RectTransform component
+            RectTransform tileRectTransform = newTile.GetComponent<RectTransform>();
+
+            // Set the tile's width and height to match the spawner
+            tileRectTransform.sizeDelta = new Vector2(spawnerWidth, spawnerHeight);
+                       
+
+
             // Reset local coordinates to (0, 0, 0)
             newTile.transform.localPosition = Vector3.zero;
+
 
             // Pass the TileSpawner reference to the DraggableTile script
             DraggableTile draggableTile = newTile.GetComponent<DraggableTile>();

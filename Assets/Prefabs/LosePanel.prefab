@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 7031410561221107988}
   - component: {fileID: 8010494849205730650}
   - component: {fileID: 9179581899481413859}
+  - component: {fileID: 4384954803120329652}
+  - component: {fileID: 5136175474025319986}
   m_Layer: 5
   m_Name: LosePanel
   m_TagString: Untagged
@@ -76,6 +78,46 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!223 &4384954803120329652
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924375067712121153}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 12
+  m_TargetDisplay: 0
+--- !u!114 &5136175474025319986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924375067712121153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &1825968152081657857
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,12 +644,16 @@ PrefabInstance:
       value: RetryBTN
       objectReference: {fileID: 0}
     - target: {fileID: 6800535137063174884, guid: 371371b45c8e99145b771a565aba3711, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6800535137063174884, guid: 371371b45c8e99145b771a565aba3711, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2521867962901215399}
     - target: {fileID: 6800535137063174884, guid: 371371b45c8e99145b771a565aba3711, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
+      value: RetryLevel
       objectReference: {fileID: 0}
     - target: {fileID: 8049191192648021945, guid: 371371b45c8e99145b771a565aba3711, type: 3}
       propertyPath: m_Pivot.x

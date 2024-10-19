@@ -30,6 +30,13 @@ public class PauseMenuUI : MonoBehaviour
         isPaused = false;
     }
 
+    // This method reloads the current active scene.
+    public void RetryLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("Retry button clicked!");
+    }
+
     void Pause()
     {
         pauseMenuUI.SetActive(true);
