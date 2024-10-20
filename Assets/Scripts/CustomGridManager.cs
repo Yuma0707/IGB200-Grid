@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class CustomGridManager : MonoBehaviour
 {
-    public GameObject panelPrefab; // Prefabricated child panel.子パネルのプレハブ
-    public GameObject gridScoreIndicatorPrefab; // Add this for the new prefab
-    public RectTransform parentPanel; // main panel.親パネル
-    public int gridSize = 10; // Default grid size.デフォルトのグリッドサイズ
+    public GameObject panelPrefab;
+    public GameObject gridScoreIndicatorPrefab;
+    public RectTransform parentPanel;
+    public int gridSize = 10;
+    public string excludedCoordinates = "";
 
     void Start()
     {
@@ -30,64 +31,63 @@ public class CustomGridManager : MonoBehaviour
         float offsetX = (panelWidth - (cellSize * gridSize)) / 2;
         float offsetY = (panelHeight - (cellSize * gridSize)) / 2;
 
+        // Process excludedCoordinates string into a list of coordinate pairs
+        List<Vector2Int> excludedCoords = new List<Vector2Int>();
+        string[] coords = excludedCoordinates.Split(new char[] { ',', ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
+        foreach (string coord in coords)
+        {
+            if (coord.Length == 2 && int.TryParse(coord[0].ToString(), out int row) && int.TryParse(coord[1].ToString(), out int col))
+            {
+                excludedCoords.Add(new Vector2Int(row, col));
+            }
+            else
+            {
+                Debug.LogWarning($"Invalid coordinate format: {coord}. Coordinates should be in 'rowcol' format (e.g., '00', '12').");
+            }
+        }
+
         for (int row = 0; row < gridSize; row++)
         {
             for (int col = 0; col < gridSize; col++)
             {
+                // Check if the current coordinate is in the exclusion list
+                if (excludedCoords.Contains(new Vector2Int(row, col)))
+                {
+                    continue; // Skip this coordinate
+                }
+
                 GameObject panel = Instantiate(panelPrefab, parentPanel);
                 panel.name = $"Panel_{row}_{col}";
 
                 RectTransform panelRect = panel.GetComponent<RectTransform>();
                 panelRect.sizeDelta = new Vector2(cellSize, cellSize);
 
-                // Set anchor and pivot to center.アンカーとピボットを中央に設定
                 panelRect.anchorMin = new Vector2(0.5f, 0.5f);
                 panelRect.anchorMax = new Vector2(0.5f, 0.5f);
                 panelRect.pivot = new Vector2(0.5f, 0.5f);
 
-                // Corrected calculation of anchoredPosition.anchoredPositionの計算を修正
                 float xPos = (col - gridSize / 2f + 0.5f) * cellSize;
                 float yPos = -(row - gridSize / 2f + 0.5f) * cellSize;
                 panelRect.anchoredPosition = new Vector2(xPos, yPos);
-                /*
 
                 // Instantiate and position GridScoreIndicators
-                if (row < gridSize - 1)
+                if (row < gridSize - 1 && !excludedCoords.Contains(new Vector2Int(row + 1, col)))
                 {
                     InstantiateGridScoreIndicator(row, col, cellSize, offsetX, offsetY, 0, cellSize / 2); // Below
                 }
-                if (col < gridSize - 1)
-                {
-                    InstantiateGridScoreIndicator(row, col, cellSize, offsetX, offsetY, cellSize / 2, 0); // Right
-                }
-                */
-            }
-        }
-
-        for (int row = 0; row < gridSize; row++)
-        {
-            for (int col = 0; col < gridSize; col++)
-            {
-                // Instantiate and position GridScoreIndicators
-                if (row < gridSize - 1)
-                {
-                    InstantiateGridScoreIndicator(row, col, cellSize, offsetX, offsetY, 0, cellSize / 2); // Below
-                }
-                if (col < gridSize - 1)
+                if (col < gridSize - 1 && !excludedCoords.Contains(new Vector2Int(row, col + 1)))
                 {
                     InstantiateGridScoreIndicator(row, col, cellSize, offsetX, offsetY, cellSize / 2, 0); // Right
                 }
             }
         }
-
-
     }
 
     private void InstantiateGridScoreIndicator(int row, int col, float cellSize, float offsetX, float offsetY, float additionalX, float additionalY)
     {
         GameObject indicator = Instantiate(gridScoreIndicatorPrefab, parentPanel);
         RectTransform indicatorRect = indicator.GetComponent<RectTransform>();
-        indicatorRect.sizeDelta = new Vector2(cellSize / 4f, cellSize / 4f); // Change these numbers to change the scaling relative to the panels size
+        indicatorRect.sizeDelta = new Vector2(cellSize / 4f, cellSize / 4f);
         indicatorRect.anchorMin = new Vector2(0.5f, 0.5f);
         indicatorRect.anchorMax = new Vector2(0.5f, 0.5f);
         indicatorRect.pivot = new Vector2(0.5f, 0.5f);
@@ -108,5 +108,4 @@ public class CustomGridManager : MonoBehaviour
         float panelHeight = parentPanel.rect.height;
         return Mathf.Min(panelWidth / gridSize, panelHeight / gridSize);
     }
-
 }
