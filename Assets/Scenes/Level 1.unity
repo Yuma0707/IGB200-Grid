@@ -1320,6 +1320,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2431568465550037917, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3678450630123718890, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7895999769555802709, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
       propertyPath: m_Name
       value: PauseManager
