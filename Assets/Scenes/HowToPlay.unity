@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -234.43}
-  m_SizeDelta: {x: 1788.1764, y: 611.1364}
+  m_AnchoredPosition: {x: 0, y: -98.017914}
+  m_SizeDelta: {x: 1788.1764, y: 837.1722}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &400556557
 MonoBehaviour:
@@ -182,23 +182,26 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6a043704c4efdab4798ba5562caa181e, type: 3}
-    m_FontSize: 80
+    m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 126
-    m_Alignment: 1
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '1.Control the placement position of objects by clicking and dragging with
-    the left mouse button
-
-
-    2.Remember to click the submit button to submit your
-    score after completing the level'
+  m_Text: "-Use the Left Mouse Button to click and drag buildings onto the grid.\r\n\r\n-Each
+    type of building interacts with the other types and itself differently. You can
+    find these interactions in the \u2018help\u2019 menu on each level or by exploring
+    them yourself! \r\n\r\n-To beat a level you need to achieve a score equal to
+    at least the \u2018par score\u2019 which is displayed in the top right corner.
+    \r\n\r\n-To get a golden star for each level you need to achieve a score higher
+    than the \u2018par score\u2019. \r\n\r\n-Once you have arranged the grid in a
+    way you think will work, press the submit button to check your work and get your
+    score.\r\n\r\n-Lastly, have fun!\r\n"
 --- !u!222 &400556558
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -806,8 +809,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000019073, y: 315}
-  m_SizeDelta: {x: 360.6466, y: 369.2073}
+  m_AnchoredPosition: {x: 844, y: 430}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2125252656
 MonoBehaviour:
