@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class Dialogue
@@ -13,10 +14,10 @@ public class Dialogue
 
 public class DialogueManager : MonoBehaviour
 {
-    public GameObject dialoguePanel; // Assign your Panel in the Inspector
-    public TMP_Text dialogueText; // Assign your Text in the Inspector
+    public GameObject dialoguePanel; 
+    public TMP_Text dialogueText; 
     public TMP_Text NPCText;
-    public Button closeButton; // Assign your Button in the Inspector
+    public Button closeButton; 
     public Button nextButton;
 
     private Queue<Dialogue> dialogues = new Queue<Dialogue>();
@@ -31,10 +32,25 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
 
+        
         closeButton.onClick.AddListener(CloseDialogue);
         dialoguePanel.SetActive(true);
         nextButton.onClick.AddListener(ShowNextLine);
         nextButton.gameObject.SetActive(false);
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == "Tutorial")
+        {
+            TutorialDialogue();
+        }
+        else if (currentScene.name == "Level 2")
+        {
+            FloDialogue();
+        }
+        else if (currentScene.name == "Level 3")
+        {
+            WattsonDialogue();
+        }
+        
 
     }
 
@@ -52,6 +68,7 @@ public class DialogueManager : MonoBehaviour
         NPCText.text = currentDialogue.NPCName;
         nextButton.gameObject.SetActive(false);
         typingMechanic = StartCoroutine(TypeDialogue(currentDialogue.lines));
+
     }
 
     private IEnumerator TypeDialogue(string[] lines)
