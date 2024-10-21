@@ -13,7 +13,8 @@ public class SubmitButtonHandler : MonoBehaviour
     public GameObject WinUI;
     public int tutorialscore= 4;
     public int level1_score = 16;
-    public int level2_score = 51;
+    public int level2_score = 45;
+    public int level3_score = 50;
     public GameObject LoseUI;
 
     private TMP_Text scoreDisplayText; // Or TMP_Text if using TextMeshPro
@@ -59,6 +60,16 @@ public class SubmitButtonHandler : MonoBehaviour
             if(totalScore>=level1_score && totalScore < level2_score)
             {
                 PlayerPrefs.SetInt("Level1Completed", 1);
+                PlayerPrefs.Save();
+            }
+            if(totalScore >= level2_score && totalScore < level3_score)
+            {
+                PlayerPrefs.SetInt("Level2Completed", 1);
+                PlayerPrefs.Save();
+            }
+            if(totalScore >= level3_score)
+            {
+                PlayerPrefs.SetInt("Level3Completed", 1);
                 PlayerPrefs.Save();
             }
             
