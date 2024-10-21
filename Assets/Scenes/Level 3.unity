@@ -3227,7 +3227,7 @@ MonoBehaviour:
   tutorialscore: 4
   level1_score: 16
   level2_score: 20
-  level3_score: 30
+  level3_score: 31
   LoseUI: {fileID: 1853583158}
 --- !u!224 &2006097115 stripped
 RectTransform:

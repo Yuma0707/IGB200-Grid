@@ -2783,8 +2783,9 @@ MonoBehaviour:
   playertartgetscore: 16
   WinUI: {fileID: 1157073954}
   tutorialscore: 4
-  level1_score: 16
-  level2_score: 51
+  level1_score: 17
+  level2_score: 21
+  level3_score: 31
   LoseUI: {fileID: 1853583158}
 --- !u!224 &2006097115 stripped
 RectTransform:
