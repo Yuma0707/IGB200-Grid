@@ -1157,7 +1157,7 @@ GameObject:
   - component: {fileID: 747777297}
   m_Layer: 0
   m_Name: Audio
-  m_TagString: Untagged
+  m_TagString: BGM
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2495,6 +2495,7 @@ MonoBehaviour:
   gridScoreIndicatorPrefab: {fileID: 1944287319584557883, guid: 615f64bc227958740bb82032309d6c2a, type: 3}
   parentPanel: {fileID: 1705395633}
   gridSize: 8
+  excludedCoordinates: 
 --- !u!114 &1705395636
 MonoBehaviour:
   m_ObjectHideFlags: 0

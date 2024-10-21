@@ -10,13 +10,23 @@ public class VolumeControl : MonoBehaviour
 
     void Start()
     {
-        // Automatically locate AudioSource in the scene
-        audioSource = FindObjectOfType<AudioSource>();
+        StartCoroutine(InitializeAudioSource());
+    }
+
+    IEnumerator InitializeAudioSource()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        GameObject audioObject = GameObject.FindWithTag("BGM");
+        if (audioObject != null)
+        {
+            audioSource = audioObject.GetComponent<AudioSource>();
+        }
 
         if (audioSource != null && volumeSlider != null)
         {
-            // Set slider to current volume of AudioSource
             volumeSlider.value = audioSource.volume;
+            volumeSlider.onValueChanged.RemoveAllListeners();
             volumeSlider.onValueChanged.AddListener(SetVolume);
         }
         else
