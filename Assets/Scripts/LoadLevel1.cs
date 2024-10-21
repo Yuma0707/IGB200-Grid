@@ -14,6 +14,8 @@ public class LoadLevel : MonoBehaviour
     public void QuitGame()
     {
         PlayerPrefs.SetInt("Level1Completed", 0);
+        PlayerPrefs.SetInt("Level2Completed", 0);
+        PlayerPrefs.SetInt("Level3Completed", 0);
         PlayerPrefs.Save();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
