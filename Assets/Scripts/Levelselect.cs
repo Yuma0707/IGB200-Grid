@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class Levelselect : MonoBehaviour
 {
-    public GameObject star;
+    public GameObject level1star;
+    public GameObject level2star;
+    public GameObject level3star;
 
     void Start()
     {
         if (PlayerPrefs.GetInt("Level1Completed", 0) == 1)
         {
-            star.SetActive(true);
+            level1star.SetActive(true);
         }
-        else
+        if (PlayerPrefs.GetInt("Level2Completed", 0) == 1)
         {
-            star.SetActive(false);
+            level2star.SetActive(true);
         }
+        if (PlayerPrefs.GetInt("Level3Completed", 0) == 1)
+        {
+            level3star.SetActive(true);
+        }
+
     }
 }

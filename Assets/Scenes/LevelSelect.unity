@@ -1413,7 +1413,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d85a1a82dd7f302459afa51722f7f879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  star: {fileID: 207102867}
+  level1star: {fileID: 207102867}
+  level2star: {fileID: 1063048014}
+  level3star: {fileID: 1440252617}
 --- !u!4 &1210357992
 Transform:
   m_ObjectHideFlags: 0

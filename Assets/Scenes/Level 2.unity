@@ -646,7 +646,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Par Score:45
+  m_text: Par Score:20
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cc4932b6d3f1c73439030ceaaa3249c2, type: 2}
   m_sharedMaterial: {fileID: -1879849233136568825, guid: cc4932b6d3f1c73439030ceaaa3249c2, type: 2}
@@ -3197,11 +3197,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreDisplayObject: {fileID: 1602247729}
-  playertartgetscore: 45
+  playertartgetscore: 20
   WinUI: {fileID: 1157073954}
   tutorialscore: 4
   level1_score: 16
-  level2_score: 51
+  level2_score: 20
+  level3_score: 30
   LoseUI: {fileID: 1853583158}
 --- !u!224 &2006097115 stripped
 RectTransform:
@@ -3798,6 +3799,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2431568465550037917, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3246529219941217464, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3678450630123718890, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5148921011060005400, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
       propertyPath: audioSource
       value: 
@@ -3805,6 +3818,10 @@ PrefabInstance:
     - target: {fileID: 7895999769555802709, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
       propertyPath: m_Name
       value: PauseManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7895999769555802709, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
