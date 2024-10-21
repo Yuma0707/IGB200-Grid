@@ -13,7 +13,7 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("UpdateTotalScore", 1f, 1f); // Total score updated every second
+        InvokeRepeating("UpdateTotalScore", 0.2f, 0.2f); // Total score updated every second
     }
 
     void UpdateTotalScore()
@@ -34,6 +34,7 @@ public class ScoreManager : MonoBehaviour
         Debug.Log("Total ScoreÇçXêVíÜ: " + totalScore);
     }
 
+    /*
     // Function called when the SUBMIT button is pressed
     public void OnSubmit()
     {
@@ -49,5 +50,6 @@ public class ScoreManager : MonoBehaviour
             SceneManager.LoadScene("Lose");
         }
     }
+    */
 
 }

@@ -25,7 +25,7 @@ public class GridScoreIndicator : MonoBehaviour
         }
 
         interactionManager = FindObjectOfType<TileInteractionManager>();
-        InvokeRepeating("CheckNeighborsAndUpdateScore", 1f, 1f);
+        InvokeRepeating("CheckNeighborsAndUpdateScore", 0.5f, 0.5f);
     }
 
     private void CheckNeighborsAndUpdateScore()
