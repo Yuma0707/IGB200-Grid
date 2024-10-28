@@ -29,6 +29,8 @@ public class DialogueManager : MonoBehaviour
     public Sprite Wattson;
     public Sprite Flo;
     public int Tut = 0;
+    private static bool hasShownIntro = false;
+
 
 
     private void Start()
@@ -51,6 +53,20 @@ public class DialogueManager : MonoBehaviour
         else if (currentScene.name == "Level 3")
         {
             WattsonDialogue();
+        }
+        else if(currentScene.name == "LevelSelect" && hasShownIntro == false)
+        {
+            if (hasShownIntro)
+            {
+                dialoguePanel.SetActive(false);
+
+            }
+            else if (hasShownIntro == false)
+            {
+                IntroDialogue();
+                
+            }
+            
         }
         Tut = 0;
 
@@ -84,7 +100,7 @@ public class DialogueManager : MonoBehaviour
             foreach (char letter in line.ToCharArray())
             {
                 dialogueText.text += letter; // Add one letter at a time
-                yield return new WaitForSeconds(0.05f); // Adjust typing speed here
+                yield return new WaitForSeconds(0.05f); // Typing speed
             }
 
 
@@ -100,6 +116,8 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         nextButton.gameObject.SetActive(false);
         if (typingMechanic != null) StopCoroutine(typingMechanic);
+        hasShownIntro = true;
+
     }
 
     public void OnNextButtonClicked()
@@ -195,8 +213,6 @@ public class DialogueManager : MonoBehaviour
                 "They should be in tomorrow, I'm sure they'll want to meet you and go through some strategies or something for dealing with stress.",
                 "Anyways, just thought I'd introduce myself since we'll be working together on this project.",
                 "Welcome and if people seem on edge, know its probably not because of you. Toodles."
-
-
              }
 
         };
