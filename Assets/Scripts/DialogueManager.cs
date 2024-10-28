@@ -19,14 +19,16 @@ public class DialogueManager : MonoBehaviour
     public TMP_Text NPCText;
     public Button closeButton; 
     public Button nextButton;
+    public GameObject WinUI;
 
     private Queue<Dialogue> dialogues = new Queue<Dialogue>();
-    private Coroutine typingMechanic;
+    public Coroutine typingMechanic;
 
     public UnityEngine.UI.Image NPCImage;
     public Sprite Raina;
     public Sprite Wattson;
     public Sprite Flo;
+    public int Tut = 0;
 
 
     private void Start()
@@ -50,7 +52,7 @@ public class DialogueManager : MonoBehaviour
         {
             WattsonDialogue();
         }
-        
+        Tut = 0;
 
     }
 
@@ -90,9 +92,10 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0) && nextButton.gameObject.activeSelf);
             nextButton.gameObject.SetActive(false);
         }
+        OnDialogueEnd();
     }
 
-    private void CloseDialogue()
+    public void CloseDialogue()
     {
         dialoguePanel.SetActive(false);
         nextButton.gameObject.SetActive(false);
@@ -132,6 +135,7 @@ public class DialogueManager : MonoBehaviour
 
     public void TutorialDialogue()
     {
+        
         Dialogue tutDialogue = new Dialogue
         {
             NPCName = "Raina",
@@ -139,8 +143,8 @@ public class DialogueManager : MonoBehaviour
             {
                 "So here's what you'll be working with.",
                 "The grid is where all the planning will be visualised.",
-                "On the left side of the screen you can see the buildings you have access too",
-                "Up here it shows on how many of each building you have left to place.",
+                "On the left side of the screen you can see the buildings you have access to.",
+                "The numbers next to each building displays how many of each building you have left to place.",
                 "Buildings placed next to each other can grant bonuses",
                 "For example houses and parks each grant 1 point when placed next to each other.",
                 "Your score is shown here, as well as the par score to beat each level"
@@ -155,6 +159,7 @@ public class DialogueManager : MonoBehaviour
 
     public void PostTutorialDialogue()
     {
+        Tut = 1;
         Dialogue tut2Dialogue = new Dialogue
         {
             NPCName = "Raina",
@@ -170,6 +175,7 @@ public class DialogueManager : MonoBehaviour
         };
         StartDialogue(tut2Dialogue);
         NPCImage.sprite = Raina;
+
     }
 
     public void FloDialogue()
@@ -182,10 +188,13 @@ public class DialogueManager : MonoBehaviour
                 "Ooh heyya!",
                 "You must be the newbie. I'm Flo",
                 "I'm the head plumber working on this project.",
-                "So you're the architect right? Interesting.",
-                "If you need any help, just give me a shout. I'm always happy to tighten a valve.",
+                "So you're the new architect right? Always nice to meet a new person, although I wish it were under better circumstances.",
+                "Oh? Raina didn't tell you about Robert?",
+                "Well I'm sure she had her reasons, he's no longer with us to put it lightly.",
+                "We actually hired a psychologist to help with people readjusting after what happened.",
+                "They should be in tomorrow, I'm sure they'll want to meet you and go through some strategies or something for dealing with stress.",
                 "Anyways, just thought I'd introduce myself since we'll be working together on this project.",
-                "Welcome and Good Luck. Toodles."
+                "Welcome and if people seem on edge, know its probably not because of you. Toodles."
 
 
              }
@@ -203,15 +212,27 @@ public class DialogueManager : MonoBehaviour
             {
                 "G'day champ.",
                 "Saw you spark up a chat with Flo and figured I should introduce myself",
-                "I'm Wattson.",
+                "I'm Wattson, the head sparkie.",
                 "I see you're already amped up for this project haha.",
-                "I'm the lead sparkie on the project, shocking I know.",
-                "HAHAHAHA!",
-                "I'm sure the rest of the department heads are either swamped already or too shy, especially that Mirra.",
-                "Right'o, I'll see you around."
+                "Who was Robert? Oh I'm guessing Flo told you about him.",
+                "Well he and I weren't super close but, yeah when I heard about his passing I was a bit taken a back.",
+                "But, you're here now and I don't want your first day to be doom and gloom.",
+                "I'm sure over the next week or so, you'll fit right in.",
+                "As you could probably tell, this place is less of a sausage fest than most",
+                "Raina only hires based on skills over filling a quota. Yet, we are still a diverse bunch.",
+                "Right'o, I'll let you get back to it. See you around."
             }
         };
         StartDialogue(wattsonDialogue);
         NPCImage.sprite = Wattson;
+    }
+    private void OnDialogueEnd()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == "Tutorial" && Tut == 1)
+        {
+            WinUI.SetActive(true);
+        }
+        CloseDialogue();
     }
 }

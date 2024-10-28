@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; // Or TMPro.TMP_Text if you're using TextMeshPro
+using UnityEngine.SceneManagement;
 using TMPro;
 using System.Threading;
 
@@ -19,6 +20,9 @@ public class SubmitButtonHandler : MonoBehaviour
 
     private TMP_Text scoreDisplayText; // Or TMP_Text if using TextMeshPro
 
+    private DialogueManager dialogueManager;
+    public GameObject dialogueButton;
+
     void Start()
     {
         // Get the Text/TMP_Text component from the assigned GameObject
@@ -31,14 +35,23 @@ public class SubmitButtonHandler : MonoBehaviour
             Debug.LogError("Score display object not assigned in SubmitButtonHandler!");
         }
 
+
         // Get the Button component and add a listener to its onClick event
         Button button = GetComponent<Button>();
         button.onClick.AddListener(CalculateAndDisplayTotalScore);
+
+        dialogueManager = GameObject.Find("Manager").GetComponent<DialogueManager>();
+        //dialogueButton = GameObject.Find("NextLine");
+        Scene currentScene = SceneManager.GetActiveScene();
+
     }
 
     private void CalculateAndDisplayTotalScore()
     {
         int totalScore = 0;
+
+
+        Scene currentScene = SceneManager.GetActiveScene();
 
         // Find all GridScoreIndicator objects in the scene
         GridScoreIndicator[] indicators = FindObjectsOfType<GridScoreIndicator>();
@@ -54,8 +67,10 @@ public class SubmitButtonHandler : MonoBehaviour
         {
             scoreDisplayText.text = totalScore.ToString();
         }
-        if(totalScore >= playertartgetscore)
+
+        if(totalScore >= playertartgetscore && currentScene.name != "Tutorial")
         {
+            
             WinUI.SetActive(true);
             if(totalScore>=level1_score && totalScore < level2_score)
             {
@@ -74,9 +89,16 @@ public class SubmitButtonHandler : MonoBehaviour
             }
             
         }
+
         if(totalScore < playertartgetscore)
         {
             LoseUI.SetActive(true);
+        }
+
+        if(totalScore >= playertartgetscore && currentScene.name == "Tutorial")
+        {
+            dialogueManager.PostTutorialDialogue();
+            
         }
     }
 }
