@@ -38,7 +38,6 @@ public class DialogueManager : MonoBehaviour
 
         
         closeButton.onClick.AddListener(CloseDialogue);
-        dialoguePanel.SetActive(true);
         nextButton.onClick.AddListener(ShowNextLine);
         nextButton.gameObject.SetActive(false);
         Scene currentScene = SceneManager.GetActiveScene();
