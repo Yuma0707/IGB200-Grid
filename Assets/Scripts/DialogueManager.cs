@@ -138,7 +138,9 @@ public class DialogueManager : MonoBehaviour
                 "And there we are, so first off. Hi, I'm Raina",
                 "I'm the project manager for this new urban city remodel project.",
                 "So lets get started.",
-                "Ooh sorry busy day,",
+                "Ooh sorry busy day, how are you going? Good? Good.",
+                "One thing that has changed since our interview was our implementation of mental health days,"
+                "Which are separate from sick days, just thought I should let you know. Anyways,"
                 "I'll take you through your first assignment just to get any of those new place jitters out of ya."
 
 
@@ -159,12 +161,14 @@ public class DialogueManager : MonoBehaviour
             lines = new string[]
             {
                 "So here's what you'll be working with.",
-                "The grid is where all the planning will be visualised.",
+                "The grid is where all your planning will be visualised.",
                 "On the left side of the screen you can see the buildings you have access to.",
                 "The numbers next to each building displays how many of each building you have left to place.",
                 "Buildings placed next to each other can grant bonuses",
                 "For example houses and parks each grant 1 point when placed next to each other.",
-                "Your score is shown here, as well as the par score to beat each level"
+                "The allocation of points its pretty simple, since living near parks boosts public mental health, you get a point. That sort of thing.",
+                "Your score is shown up the top right of the screen, as well as the par score to beat each level",
+                "And below that is the help button incase you get confused on what buildings give what points."
 
 
             }
