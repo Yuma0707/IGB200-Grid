@@ -47,11 +47,11 @@ public class PauseMenuUI : MonoBehaviour
     {
         PlayerPrefs.SetInt("Level1Completed", 0);
         PlayerPrefs.Save();
-        #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-        #else
-        Application.Quit();
-        #endif
+        //#if UNITY_EDITOR
+       //UnityEditor.EditorApplication.isPlaying = false;
+        //#else
+        UnityEngine.Application.Quit();
+        //#endif
     }
     public void LoadScene(string sceneName)
     {
