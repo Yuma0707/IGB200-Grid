@@ -97,6 +97,8 @@ MonoBehaviour:
   startParent: {fileID: 0}
   tileSpawner: {fileID: 0}
   isDropped: 0
+  pickUpSound: {fileID: 8300000, guid: 3dc1a91ae4a587e46a8285838222ddfc, type: 3}
+  putDownSound: {fileID: 8300000, guid: 4312820cf59d3bc4d8c77dfebf2dcb2b, type: 3}
 --- !u!114 &-4147999546327181692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +124,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4312820cf59d3bc4d8c77dfebf2dcb2b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.104
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0

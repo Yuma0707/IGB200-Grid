@@ -225,3 +225,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 2999319955538294792, guid: 236d8724bf682324c9105208445c1b35, type: 3}
   tileCount: 5
+  tileCounterText: {fileID: 0}
