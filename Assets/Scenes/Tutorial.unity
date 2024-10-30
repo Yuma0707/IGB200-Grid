@@ -1227,7 +1227,7 @@ MonoBehaviour:
   NPCText: {fileID: 1011217231}
   closeButton: {fileID: 660880999}
   nextButton: {fileID: 895221196}
-  WinUI: {fileID: 0}
+  WinUI: {fileID: 1157073954}
   NPCImage: {fileID: 1123628770}
   Raina: {fileID: 21300000, guid: 741e4d9d31687f04c9a885b27121852f, type: 3}
   Wattson: {fileID: 21300000, guid: c66b9896a6d708e45baffc54ef116037, type: 3}
@@ -1327,7 +1327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &660880998
 RectTransform:
   m_ObjectHideFlags: 0

@@ -99,7 +99,7 @@ public class DialogueManager : MonoBehaviour
             foreach (char letter in line.ToCharArray())
             {
                 dialogueText.text += letter; // Add one letter at a time
-                yield return new WaitForSeconds(0.05f); // Typing speed
+                yield return new WaitForSeconds(0.01f); // Typing speed
             }
 
 
@@ -245,7 +245,7 @@ public class DialogueManager : MonoBehaviour
         StartDialogue(wattsonDialogue);
         NPCImage.sprite = Wattson;
     }
-    private void OnDialogueEnd()
+    public void OnDialogueEnd()
     {
         Scene currentScene = SceneManager.GetActiveScene();
         if (currentScene.name == "Tutorial" && Tut == 1)
