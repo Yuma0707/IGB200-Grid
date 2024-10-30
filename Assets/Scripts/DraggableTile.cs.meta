@@ -3,7 +3,11 @@ guid: 1794da0b5d2e86c4c9c4b0de245067f6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - startParent: {instanceID: 0}
+  - tileSpawner: {instanceID: 0}
+  - pickUpSound: {fileID: 8300000, guid: 3dc1a91ae4a587e46a8285838222ddfc, type: 3}
+  - putDownSound: {fileID: 8300000, guid: 4312820cf59d3bc4d8c77dfebf2dcb2b, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
