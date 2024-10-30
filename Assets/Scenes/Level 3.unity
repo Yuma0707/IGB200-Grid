@@ -5050,7 +5050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2431568465550037917, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3246529219941217464, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
       propertyPath: m_IsActive
@@ -5058,7 +5058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3678450630123718890, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5148921011060005400, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
       propertyPath: audioSource
@@ -5069,7 +5069,8 @@ PrefabInstance:
       value: PauseManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8619245013511057869, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
