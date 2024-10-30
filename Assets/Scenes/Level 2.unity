@@ -3049,6 +3049,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 75147677}
   - {fileID: 2045552538}
   - {fileID: 1265305750}
   - {fileID: 1886755785}
@@ -3063,7 +3064,6 @@ RectTransform:
   - {fileID: 1853583159}
   - {fileID: 1157073955}
   - {fileID: 926525401}
-  - {fileID: 75147677}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -6408,6 +6408,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2235873858293143419, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f8278bf41eb40204fbed77f8f312eb9b, type: 3}
     - target: {fileID: 2431568465550037917, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6420,10 +6424,26 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3905756147845652994, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f8278bf41eb40204fbed77f8f312eb9b, type: 3}
+    - target: {fileID: 4176252818019369693, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f8278bf41eb40204fbed77f8f312eb9b, type: 3}
     - target: {fileID: 5148921011060005400, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 747777297}
+    - target: {fileID: 5148921011060005400, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
+      propertyPath: toggleButton
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5494990015252346513, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f8278bf41eb40204fbed77f8f312eb9b, type: 3}
     - target: {fileID: 7895999769555802709, guid: 48dec3814613fc145bb983296b8e865e, type: 3}
       propertyPath: m_Name
       value: PauseManager
