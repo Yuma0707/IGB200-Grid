@@ -139,8 +139,8 @@ public class DialogueManager : MonoBehaviour
                 "I'm the project manager for this new urban city remodel project.",
                 "So lets get started.",
                 "Ooh sorry busy day, how are you going? Good? Good.",
-                "One thing that has changed since our interview was our implementation of mental health days,"
-                "Which are separate from sick days, just thought I should let you know. Anyways,"
+                "One thing that has changed since our interview was our implementation of mental health days,",
+                "Which are separate from sick days, just thought I should let you know. Anyways,",
                 "I'll take you through your first assignment just to get any of those new place jitters out of ya."
 
 
